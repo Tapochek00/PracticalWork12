@@ -6,18 +6,24 @@
         xmlns:local="clr-namespace:PracticalWork12"
         mc:Ignorable="d"
         Title="Практическая работа 12" Height="450" Width="350"
-        MinHeight="450" MinWidth="350" 
+        MinHeight="450" MinWidth="350" Loaded="Window_Loaded"
         WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid Background="#FFF1F1F1">
         <TabControl>
-            <TabItem Header="Задача 1">
+            <TabItem x:Name="first" Header="Задача 1" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <GroupBox Margin="0, 20" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Header="Исходные данные">
+                    <GroupBox Margin="0, 20" Grid.Row="0" MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Top" Header="Исходные данные">
                         <Grid>
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem x:Name="Clear1" Header="Очистить" Click="Clear1_Click"></MenuItem>
+                                    <MenuItem x:Name="CountCount1" Header="Рассчитать" Click="btn_Count_Click"></MenuItem>
+                                </ContextMenu>
+                            </Grid.ContextMenu>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
@@ -35,35 +41,30 @@
                             <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right">Точка C</Label>
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="Результат" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <GroupBox Header="Результат" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" MinWidth="150">
                         <DockPanel>
-                            <Button x:Name="btn_Count" DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Рассчитать" Margin="20" Padding="5" Background="#FFEDEDED" Click="btn_Count_Click"></Button>
+                            <Button x:Name="btn_Count" ToolTip="Расчёт произведения длин отрезков AC и BC" DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Рассчитать" Margin="20" Padding="5" Background="#FFEDEDED" Click="btn_Count_Click"></Button>
                             <TextBox x:Name="result" IsReadOnly="True" DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20, 0, 20, 20" MinWidth="50"></TextBox>
                         </DockPanel>
                     </GroupBox>
-                    <Menu Grid.Row="1" Margin="0, 0, 0, 20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#FFDADADA">
-                        <MenuItem x:Name="btn_Exit" Header="Выход" Click="btn_Exit_Click"></MenuItem>
-                        <MenuItem x:Name="btn_About" Header="О программе" Click="btn_About_Click"></MenuItem>
-                        <MenuItem Header="Рассчитать" Click="btn_Count_Click"></MenuItem>
-                    </Menu>
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Задача 2">
+            <TabItem x:Name="second" Header="Задача 2">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.5*"></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <GroupBox Margin="0, 20" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Header="Исходные данные">
+                    <GroupBox Margin="0, 20" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top"  Header="Исходные данные" MinWidth="250">
                         <DockPanel>
                             <TextBox DockPanel.Dock="Left" x:Name="number" TextChanged="TextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="50" Margin="10"></TextBox>
                             <Label DockPanel.Dock="Right" HorizontalAlignment="Right">Введите трёхзначное число</Label>
                         </DockPanel>
                     </GroupBox>
 
-                    <GroupBox Header="Результат" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <GroupBox Header="Результат" Grid.Row="1" MinWidth="250" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -75,7 +76,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="btn_Count2" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Рассчитать" Margin="20" Padding="5" Background="#FFEDEDED" Click="btn_Count_Click"></Button>
+                            <Button x:Name="btn_Count2" Grid.Row="0" Grid.ColumnSpan="3" ToolTip="Расчёт суммы и произведения длин отрезков AC и BC" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Рассчитать" Margin="20" Padding="5" Background="#FFEDEDED" Click="btn_Count2_Click"></Button>
                             <TextBox x:Name="sum" IsReadOnly="True" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20, 0, 20, 20" MinWidth="50"></TextBox>
                             <TextBox x:Name="mult" IsReadOnly="True" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20, 0, 20, 20" MinWidth="50"></TextBox>
                             <Label Grid.Row="1" Grid.Column="1">Сумма</Label>
@@ -86,9 +87,21 @@
             </TabItem>
         </TabControl>
 
-        <StatusBar VerticalAlignment="Bottom" Panel.ZIndex="0">
-            <TextBlock></TextBlock>
+        <StatusBar Grid.Row="1" VerticalAlignment="Bottom">
+            <TextBlock x:Name="datetime" Text="00:00 00.00.00"></TextBlock>
             <TextBlock Text="Вариант 14"></TextBlock>
+            <Separator/>
+            <Menu>
+                <MenuItem x:Name="btn_Exit" ToolTip="Выйти из программы" Header="Выход" Click="btn_Exit_Click"></MenuItem>
+                <MenuItem Header="Задача 1">
+                    <MenuItem x:Name="btn_About" Header="О программе" Click="btn_About_Click"></MenuItem>
+                    <MenuItem Header="Рассчитать" ToolTip="Расчёт произведения длин отрезков AC и BC" Click="btn_Count_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Задача 2">
+                    <MenuItem x:Name="btn_About2" Header="О программе" Click="btn_About2_Click"></MenuItem>
+                    <MenuItem Header="Рассчитать" ToolTip="Расчёт суммы и произведения длин отрезков AC и BC" Click="btn_Count_Click"></MenuItem>
+                </MenuItem>
+            </Menu>
         </StatusBar>
     </Grid>
 </Window>
