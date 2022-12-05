@@ -43,6 +43,12 @@
                     </GroupBox>
                     <GroupBox Header="Результат" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" MinWidth="150">
                         <DockPanel>
+                            <DockPanel.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem x:Name="Clear2" Header="Очистить" Click="Clear2_Click"></MenuItem>
+                                    <MenuItem x:Name="CountCount2" Header="Рассчитать" Click="btn_Count_Click"></MenuItem>
+                                </ContextMenu>
+                            </DockPanel.ContextMenu>
                             <Button x:Name="btn_Count" ToolTip="Расчёт произведения длин отрезков AC и BC" DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Рассчитать" Margin="20" Padding="5" Background="#FFEDEDED" Click="btn_Count_Click"></Button>
                             <TextBox x:Name="result" IsReadOnly="True" DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20, 0, 20, 20" MinWidth="50"></TextBox>
                         </DockPanel>
@@ -59,13 +65,25 @@
 
                     <GroupBox Margin="0, 20" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top"  Header="Исходные данные" MinWidth="250">
                         <DockPanel>
-                            <TextBox DockPanel.Dock="Left" x:Name="number" TextChanged="TextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="50" Margin="10"></TextBox>
+                            <DockPanel.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem x:Name="Clear22" Header="Очистить" Click="Clear22_Click"></MenuItem>
+                                    <MenuItem x:Name="CountCount22" Header="Рассчитать" Click="btn_Count2_Click"></MenuItem>
+                                </ContextMenu>
+                            </DockPanel.ContextMenu>
+                            <TextBox DockPanel.Dock="Left" x:Name="number" TextChanged="TextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="50" Margin="10" TextChanged="number_TextChanged"></TextBox>
                             <Label DockPanel.Dock="Right" HorizontalAlignment="Right">Введите трёхзначное число</Label>
                         </DockPanel>
                     </GroupBox>
 
                     <GroupBox Header="Результат" Grid.Row="1" MinWidth="250" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <Grid>
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem x:Name="Clear23" Header="Очистить" Click="Clear23_Click"></MenuItem>
+                                    <MenuItem x:Name="CountCount23" Header="Рассчитать" Click="btn_Count2_Click"></MenuItem>
+                                </ContextMenu>
+                            </Grid.ContextMenu>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>

@@ -121,5 +121,27 @@ namespace PracticalWork12
             b.Clear();
             c.Clear();
         }
+
+        private void Clear2_Click(object sender, RoutedEventArgs e)
+        {
+            result.Clear();
+        }
+
+        private void Clear22_Click(object sender, RoutedEventArgs e)
+        {
+            number.Clear();
+        }
+
+        private void Clear23_Click(object sender, RoutedEventArgs e)
+        {
+            sum.Clear();
+            mult.Clear();
+        }
+
+        private void number_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            sum.Clear();
+            mult.Clear();
+        }
     }
 }
