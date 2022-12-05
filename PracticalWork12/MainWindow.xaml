@@ -71,7 +71,7 @@
                                     <MenuItem x:Name="CountCount22" Header="Рассчитать" Click="btn_Count2_Click"></MenuItem>
                                 </ContextMenu>
                             </DockPanel.ContextMenu>
-                            <TextBox DockPanel.Dock="Left" x:Name="number" TextChanged="TextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="50" Margin="10" TextChanged="number_TextChanged"></TextBox>
+                            <TextBox DockPanel.Dock="Left" x:Name="number" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="50" Margin="10" TextChanged="number_TextChanged"></TextBox>
                             <Label DockPanel.Dock="Right" HorizontalAlignment="Right">Введите трёхзначное число</Label>
                         </DockPanel>
                     </GroupBox>
