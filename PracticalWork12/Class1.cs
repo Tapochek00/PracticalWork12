@@ -18,11 +18,11 @@ namespace PracticalWork12
             return ac * bc;
         }
 
-        public static void DigitSumMult(int num, out int sumCount, out int multCount)
+        public static void DigitSumMult(int num, out int sum, out int mult)
         {
             int one = num / 100, two = num % 100 / 10, three = num % 10;
-            sumCount = one + two + three;
-            multCount = one * two * three;
+            sum = one + two + three;
+            mult = one * two * three;
         }
     }
 }
